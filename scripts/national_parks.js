@@ -2,18 +2,64 @@
 
 window.onload = () => {
 
+    initCategoriesDropdown();
+
     // grabed the radio by id from html
     let locationRadio = document.querySelector("#location");
     let typeRadio = document.querySelector("#type");
+    let categoriesDropdown= document.querySelector("#locationsArray");
 
     locationRadio.addEventListener("change", selectOptions);
     typeRadio.addEventListener("change", selectOptions);
+    categoriesDropdown.addEventListener("change",getLocation);
+
 
 
 
 
 }
+function getLocation(event){
+
+    let selectedlocation = event.target.value;
+    let matchingLocation = nationalParksArray.filter((stateLocation)=>{
+        return stateLocation.State === selectedlocation;
+
+    })
+    let tablebody = document.querySelector("#locationTableBody");
+
+    tablebody.innerHTML="";
+    matchingLocation.forEach((stateLocation)=>{
+        buildTableRow(tablebody,stateLocation);
+    })
+}
+function buildTableRow(tablebody,data){
+    let newRow = tablebody.insertRow();
+
+    for(let property in data){
+        let newTd = newRow.insertCell();
+        newTd.innerText = data[property];
+    }
+
+}
+
+function initCategoriesDropdown(){
+    let categoriesDropdown = document.querySelector("#options");
+    let defaultOption = document.createElement("option")
+    defaultOption.value ="";
+    defaultOption.textContent ="Select a Location";
+
+    categoriesDropdown.appendChild(defaultOption);
+    locationsArray.forEach((State)=>{
+        let newOption = document.createElement("option");
+        newOption.value = State;
+        categoriesDropdown.appendChild(newOption);
+    })
+}
+
 function selectOptions() {
+
+    
+    
 
     let locationOptions = document.querySelector("#options");
     locationOptions.innerHTML = ""
@@ -29,12 +75,12 @@ function selectOptions() {
 
 
 
-        //    }else if(document.querySelector("#type").checked){
-
-        //    }
+        
     }
 
 }
+
+
 
 
 
