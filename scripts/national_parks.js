@@ -2,16 +2,16 @@
 
 window.onload = () => {
 
-    initCategoriesDropdown();
+    initLocationDropdown();
 
     // grabed the radio by id from html
     let locationRadio = document.querySelector("#location");
     let typeRadio = document.querySelector("#type");
-    let categoriesDropdown= document.querySelector("#locationsArray");
+    // let categoriesDropdown= document.querySelector("#locationsArray");
 
     locationRadio.addEventListener("change", selectOptions);
     typeRadio.addEventListener("change", selectOptions);
-    categoriesDropdown.addEventListener("change",getLocation);
+    // categoriesDropdown.addEventListener("change",getLocation);
 
 
 
@@ -36,46 +36,51 @@ function buildTableRow(tablebody,data){
     let newRow = tablebody.insertRow();
 
     for(let property in data){
-        let newTd = newRow.insertCell();
-        newTd.innerText = data[property];
+        let newCell = newRow.insertCell();
+        newCell.innerText = data[property];
     }
 
 }
 
-function initCategoriesDropdown(){
-    let categoriesDropdown = document.querySelector("#options");
+function initLocationDropdown(){
+    let locationsDropdown = document.querySelector("#options");
     let defaultOption = document.createElement("option")
     defaultOption.value ="";
-    defaultOption.textContent ="Select a Location";
+    defaultOption.textContent ="Select a State";
 
-    categoriesDropdown.appendChild(defaultOption);
+    locationsDropdown.appendChild(defaultOption);
+
+    
+    
     locationsArray.forEach((State)=>{
-        let newOption = document.createElement("option");
-        newOption.value = State;
-        categoriesDropdown.appendChild(newOption);
+        let option = document.createElement("option");
+        option.value = State;
+        option.textContent = State;
+        locationsDropdown.appendChild(option);
     })
 }
 
 function selectOptions() {
-
+    console.log("selcted function");
+    console.log("Location radio checked:", document.querySelector("#location").checked);
     
     
 
     let locationOptions = document.querySelector("#options");
-    locationOptions.innerHTML = ""
+    locationOptions.innerHTML = "";
 
     if (document.querySelector("#location").checked) {
-        let locations = locationsArray;
+        console.log("Location radio")
+        
 
-        locations.forEach((location) => {
+        locationsArray.forEach((location) => {
             let option = document.createElement("option");
             option.textContent = location;
             locationOptions.appendChild(option);
         });
-
-
-
         
+    }else{
+        console.log("type radio Button");
     }
 
 }
