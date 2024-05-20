@@ -8,34 +8,37 @@ window.onload = () => {
 
     locationRadio.addEventListener("change", selectOptions);
     typeRadio.addEventListener("change", selectOptions);
-    
 
 
- 
+
+
 }
-function selectOptions(){
+function selectOptions() {
 
-   let locationOptions = document.querySelector("#options");
-   locationOptions.innerHTML =""
+    let locationOptions = document.querySelector("#options");
+    locationOptions.innerHTML = ""
 
-   if(document.querySelector("#location").checked){
-    let locations = locationsArray;
+    if (document.querySelector("#location").checked) {
+        let locations = locationsArray;
 
-    locations.forEach((location)=>{
-        let option = document.createElement("option");
-        option.textContent = location;
-        locationOptions.appendChild(option);
-    });
-   }else if(document.querySelector("#type").checked){
+        locations.forEach((location) => {
+            let option = document.createElement("option");
+            option.textContent = location;
+            locationOptions.appendChild(option);
+        });
 
-   }
 
-        
+
+        //    }else if(document.querySelector("#type").checked){
+
+        //    }
+    }
+
 }
 
 
 
- 
+
 
 
 
@@ -45,11 +48,11 @@ function selectOptions(){
         The data script files are located in the scripts/data directory
     */
 
-    //log the locationsArray to the console (scripts/data/locationData.js)
-    console.log(locationsArray)
+//log the locationsArray to the console (scripts/data/locationData.js)
+console.log(locationsArray)
 
-    //log the parkTypesArray to the console (scripts/data/parkTypeData.js)
-    console.log(parkTypesArray)
+//log the parkTypesArray to the console (scripts/data/parkTypeData.js)
+console.log(parkTypesArray)
 
-    //log the nationalParksArray to the console (scripts/data/nationalParkData.js)
-    console.log(nationalParksArray)
+//log the nationalParksArray to the console (scripts/data/nationalParkData.js)
+console.log(nationalParksArray)
