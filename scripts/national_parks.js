@@ -4,55 +4,88 @@ window.onload = () => {
 
     initLocationDropdown();
 
-    // grabed the radio by id from html
+    // grabed the radio by id from html for location option
     let locationRadio = document.querySelector("#location");
+
+    // grabed the id for the radio type option
     let typeRadio = document.querySelector("#type");
-    // let categoriesDropdown= document.querySelector("#locationsArray");
 
+    // grabing the dropdown by the id from html page
+    let stateDropdown = document.querySelector("#stateOptions");
+
+    // listening for a change by using addeventListener
     locationRadio.addEventListener("change", selectOptions);
-    typeRadio.addEventListener("change", selectOptions);
-    // categoriesDropdown.addEventListener("change",getLocation);
 
+    typeRadio.addEventListener("change", selectOptions);
+
+    stateDropdown.addEventListener("change", getLocation);
+    
 
 
 
 
 }
-function getLocation(event){
 
+
+function getLocation(event) {
+
+    // 
     let selectedlocation = event.target.value;
-    let matchingLocation = nationalParksArray.filter((stateLocation)=>{
+    // created a variable to hold the table and grabing the id form the html page
+    let tablebody = document.querySelector("#locationTableBody");
+    // to clear it after every click
+    tablebody.innerHTML = "";
+
+    // Its going through the nationalParksArray and filtering out the 
+    let matchingLocation = nationalParksArray.filter((stateLocation) => {
         return stateLocation.State === selectedlocation;
 
-    })
-    let tablebody = document.querySelector("#locationTableBody");
+    });
+   
 
-    tablebody.innerHTML="";
-    matchingLocation.forEach((stateLocation)=>{
-        buildTableRow(tablebody,stateLocation);
+    // to loop through the ones that match the state on the locationArray and the state on nationalparksArray
+    matchingLocation.forEach((stateLocation) => {
+        buildTableRow(tablebody, stateLocation);
     })
-}
-function buildTableRow(tablebody,data){
-    let newRow = tablebody.insertRow();
 
-    for(let property in data){
-        let newCell = newRow.insertCell();
-        newCell.innerText = data[property];
+    // to have a table dispalay
+    function buildTableRow(tableBody, stateLocation) {
+
+        let row = tableBody.insertRow(-1);
+
+        let cell1 = row.insertCell(0);
+        cell1.innerText = stateLocation.LocationID;
+
+        let cell2 = row.insertCell(1);
+        cell2.innerText = stateLocation.LocationName;
+
+        let cell3 = row.insertCell(2);
+        cell3.innerText = `${stateLocation.Address}, ${stateLocation.City}, ${stateLocation.State}, ${stateLocation.ZipCode}`;
+
+        let cell4 = row.insertCell(3);
+        cell4.innerText = stateLocation.Phone;
+
+        let cell5 = row.insertCell(4);
+        cell5.innerText = stateLocation.Visit ? `<a href="${stateLocation.Visit}">Visit</a>`:"";
+
+
     }
-
+   
 }
+console.log(getLocation);
 
-function initLocationDropdown(){
-    let locationsDropdown = document.querySelector("#options");
+
+function initLocationDropdown() {
+    let locationsDropdown = document.querySelector("#stateOptions");
     let defaultOption = document.createElement("option")
-    defaultOption.value ="";
-    defaultOption.textContent ="Select a State";
+    defaultOption.value = "";
+    defaultOption.textContent = "Select a State";
 
     locationsDropdown.appendChild(defaultOption);
 
-    
-    
-    locationsArray.forEach((State)=>{
+
+
+    locationsArray.forEach((State) => {
         let option = document.createElement("option");
         option.value = State;
         option.textContent = State;
@@ -63,23 +96,23 @@ function initLocationDropdown(){
 function selectOptions() {
     console.log("selcted function");
     console.log("Location radio checked:", document.querySelector("#location").checked);
-    
-    
 
-    let locationOptions = document.querySelector("#options");
+
+
+    let locationOptions = document.querySelector("#stateOptions");
     locationOptions.innerHTML = "";
 
     if (document.querySelector("#location").checked) {
         console.log("Location radio")
-        
+
 
         locationsArray.forEach((location) => {
             let option = document.createElement("option");
             option.textContent = location;
             locationOptions.appendChild(option);
         });
-        
-    }else{
+
+    } else {
         console.log("type radio Button");
     }
 
@@ -100,10 +133,10 @@ function selectOptions() {
     */
 
 //log the locationsArray to the console (scripts/data/locationData.js)
-console.log(locationsArray)
+// console.log(locationsArray)
 
-//log the parkTypesArray to the console (scripts/data/parkTypeData.js)
-console.log(parkTypesArray)
+// //log the parkTypesArray to the console (scripts/data/parkTypeData.js)
+// console.log(parkTypesArray)
 
-//log the nationalParksArray to the console (scripts/data/nationalParkData.js)
-console.log(nationalParksArray)
+// //log the nationalParksArray to the console (scripts/data/nationalParkData.js)
+// console.log(nationalParksArray)
