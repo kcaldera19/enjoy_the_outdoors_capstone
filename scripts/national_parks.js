@@ -3,6 +3,7 @@
 window.onload = () => {
 
     initLocationDropdown();
+    initTypeDropDown();
 
     // grabed the radio by id from html for location option
     let locationRadio = document.querySelector("#location");
@@ -23,12 +24,25 @@ window.onload = () => {
 
     stateDropdown.addEventListener("change", getLocation);
     
-   
 
 
 
+}
+
+function initTypeDropDown(){
+    let typeDropdown = document.querySelector("#stateOptions");
+    let defaultOption = document.createElement("option");
+    defaultOption.value ="";
+    defaultOption.textContent ="Select a type";
+    typeDropdown.appendChild(defaultOption);
 
 
+    parkTypesArray.forEach((type)=>{
+        let newOption = document.createElement("option");
+        newOption.value = type;
+        newOption.textContent = type;
+        typeDropdown.appendChild(newOption);
+    });
 }
 
 
@@ -43,78 +57,91 @@ function getLocation(event) {
     tablebody.innerHTML = "";
 
     // Its going through the nationalParksArray and filtering out the 
-    let matchingLocation = nationalParksArray.filter((stateLocation) => {
-        return stateLocation.State === selectedlocation;
+    let matchingData = nationalParksArray.filter((item) => {
+        if(document.querySelector("#location").checked){
+
+            return item.State === selectedlocation;
+        }else if (document.querySelector("#type").checked){
+            let parkType =item.LocationName.toLowerCase();
+            return parkType.includes(selectedlocation.toLowerCase());
+
+        }
+        
 
     });
+    matchingData.forEach((data)=>{
+        buildTableRow(tablebody,data);
+    });
+    
+
+    // let matchingType = nationalParksArray.filter((park) => {
+    //     let parkType = park.LocationName.toLowerCase();
+    //     return["National Park","National Monument", "Recreation Area", "Scenic Trail","Battlefield", "Historic","Memorial",
+    //     "Preserve","Island","River","Seashore","Trail","Parkway"].some((type)=>{
+
+    //         return parkType.indexOf(type) !== -1;
+
+    //     });
+        
+
+    // });
 
 
     // to loop through the ones that match the state on the locationArray and the state on nationalparksArray
-    matchingLocation.forEach((stateLocation) => {
-        buildTableRow(tablebody, stateLocation);
-    })
+    // matchingLocation.forEach((stateLocation) => {
+    //     buildTableRow(tablebody, stateLocation);
+    // });
 
-    let matchingType = nationalParksArray.filter((park) => {
-        let parkType = park.LocationName.toLowerCase();
-        return["National Park","National Monument", "Recreation Area", "Scenic Trail","Battlefield", "Historic","Memorial",
-        "Preserve","Island","River","Seashore","Trail","Parkway"].some((type)=>{
+   
 
-            return parkType.indexOf(type) !== -1;
+    // matchingType.forEach((parkType) => {
+    //     buildTableRow(tablebody, parkType);
 
-        });
-        
-
-
-    });
-
-    matchingType.forEach((parkType) => {
-        buildTableRow(tablebody, parkType);
-
-    })
+    // })
 
     // to have a table dispalay the location info
-    function buildTableRow(tableBody, stateLocation) {
+    function buildTableRow(tableBody, data) {
 
         let row = tableBody.insertRow(-1);
 
         let cell1 = row.insertCell(0);
-        cell1.innerText = stateLocation.LocationID;
+        cell1.innerText = data.LocationID;
 
         let cell2 = row.insertCell(1);
-        cell2.innerText = stateLocation.LocationName;
+        cell2.innerText = data.LocationName;
 
         let cell3 = row.insertCell(2);
-        cell3.innerText = `${stateLocation.Address}, ${stateLocation.City}, ${stateLocation.State}, ${stateLocation.ZipCode}`;
+        cell3.innerText = `${data.Address}, ${data.City}, ${data.State}, ${data.ZipCode}`;
 
         let cell4 = row.insertCell(3);
-        cell4.innerText = stateLocation.Phone;
+        cell4.innerText = data.Phone;
 
         let cell5 = row.insertCell(4);
-        cell5.innerText = stateLocation.Visit ? `<a href="${stateLocation.Visit}">Visit</a>` : "";
+        cell5.innerText =data.Visit ? `<a href="${data.Visit}">Visit</a>` : "";
 
 
     }
-    function buildTableRow(tableBody, parkType ){
-        parkType.forEach((park)=>{
-            let row = tableBody.insertRow(-1);
+    // function buildTableRow(tableBody, parkType ){
+    //     parkType.forEach((park)=>{
+    //         let row = tableBody.insertRow(-1);
 
-            let cell1 = row.insertCell(0);
-            cell1.innerText = park.LocationID;
+    //         let cell1 = row.insertCell(0);
+    //         cell1.innerText = park.LocationID;
 
-            let cell2 = row.insertCell(1);
-            cell2.innerText = park.LocationName;
+    //         let cell2 = row.insertCell(1);
+    //         cell2.innerText = park.LocationName;
 
-            let cell3 = row.insertCell(2);
-            cell3.innerText = `${park.Address}, ${park.City}, ${park.State}, ${park.ZipCode}`;
+    //         let cell3 = row.insertCell(2);
+    //         cell3.innerText = `${park.Address}, ${park.City}, ${park.State}, ${park.ZipCode}`;
 
-            let cell4 = row.insertCell(3);
-            cell4.innerText = parkType.Phone;
+    //         let cell4 = row.insertCell(3);
+    //         cell4.innerText = parkType.Phone;
 
-            let cell5 = row.insertCell(4);
-            cell5.innerText = park.Visit ? `<a href="${park.Visit}">Visit</a>` : "";
+    //         let cell5 = row.insertCell(4);
+    //         cell5.innerText = park.Visit ? `<a href="${park.Visit}">Visit</a>` : "";
 
-        })
-    }
+    //     })
+    // }
 
 }
 
