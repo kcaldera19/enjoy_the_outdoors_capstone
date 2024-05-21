@@ -21,9 +21,46 @@ function displayMountainCard(event){
     let mountainDiv = document.querySelector("#mountainSelected");
     mountainDiv.innerHTML = "";
     let mountain = mountainsArray.find((mountain)=>mountainsArray.name === event.target.value);
-    
+
+    let cardDiv = document.createElement("div");
+    cardDiv.classList.add("card","w-25");
+
+    let cardImage = document.createElement("img");
+    cardImage.classList.add("card-img-top", "car-img-fit");
+
+
+    // need to src properly
+    cardImage.src = mountain.image;
+    cardImage.alt = mountain.name;
+
+    cardDiv.appendChild(cardImage);
+
+    let cardBody = document.createElement("div");
+    cardDiv.classList.add("card-body");
+
+    let cardTitle = document.createElement("h5");
+    cardTitle.classList.add("card-title");
+
+    cardTitle.innerHTML = mountain.name;
+
+    cardBody.appendChild(cardTitle);
+
+    let cardText = document.createElement("p");
+    cardTitle.classList.add("card-text");
+
+    cardText.innerHTML = `${mountain.name} has an elevation of ${mountain.elevation} effort:${mountain.effort} description${mountain.desc} ${mountain.coords}`
+
+    cardBody.appendChild(cardText);
+
+    cardDiv.append(cardBody);
+
+    mountainDiv.appendChild(cardDiv);
+
+
 
 }
+
+// the dropdown
 function initMountainDropdown(){
     let mountainDropdown = document.querySelector("#selectMountains");
 
