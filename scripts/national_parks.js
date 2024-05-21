@@ -19,7 +19,7 @@ window.onload = () => {
     typeRadio.addEventListener("change", selectOptions);
 
     stateDropdown.addEventListener("change", getLocation);
-    
+
 
 
 
@@ -41,7 +41,7 @@ function getLocation(event) {
         return stateLocation.State === selectedlocation;
 
     });
-   
+
 
     // to loop through the ones that match the state on the locationArray and the state on nationalparksArray
     matchingLocation.forEach((stateLocation) => {
@@ -66,23 +66,33 @@ function getLocation(event) {
         cell4.innerText = stateLocation.Phone;
 
         let cell5 = row.insertCell(4);
-        cell5.innerText = stateLocation.Visit ? `<a href="${stateLocation.Visit}">Visit</a>`:"";
+        cell5.innerText = stateLocation.Visit ? `<a href="${stateLocation.Visit}">Visit</a>` : "";
 
 
     }
-   
+
 }
 console.log(getLocation);
 
 
 function initLocationDropdown() {
+
     let locationsDropdown = document.querySelector("#stateOptions");
-    let defaultOption = document.createElement("option")
+    let typeDropdown = document.querySelector("#stateOptions");
+
+    let defaultOption = document.createElement("option");
     defaultOption.value = "";
     defaultOption.textContent = "Select a State";
 
+
     locationsDropdown.appendChild(defaultOption);
 
+
+    let placeholder = document.createElement("newOptions");
+    placeholder.value = "";
+    placeholder.textContent = "Select a type";
+
+    typeDropdown.appendChild(placeholder);
 
 
     locationsArray.forEach((State) => {
@@ -90,7 +100,16 @@ function initLocationDropdown() {
         option.value = State;
         option.textContent = State;
         locationsDropdown.appendChild(option);
-    })
+    }); parkTypesArray.forEach((name) => {
+        let newOption = document.createElement("newOption");
+        newOption.value = name;
+        newOption.textContent = name;
+        typeDropdown.appendChild(newOption);
+
+
+    });
+
+
 }
 
 function selectOptions() {
@@ -102,6 +121,8 @@ function selectOptions() {
     let locationOptions = document.querySelector("#stateOptions");
     locationOptions.innerHTML = "";
 
+
+
     if (document.querySelector("#location").checked) {
         console.log("Location radio")
 
@@ -112,8 +133,15 @@ function selectOptions() {
             locationOptions.appendChild(option);
         });
 
-    } else {
-        console.log("type radio Button");
+    }else if (document.querySelector("#type").checked) {
+        console.log("type radio");
+
+        parkTypesArray.forEach((type) => {
+            let option = document.createElement("option");
+            option.textContent = type;
+            locationOptions.appendChild(option);
+        });
+
     }
 
 }
