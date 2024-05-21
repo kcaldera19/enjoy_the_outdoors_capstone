@@ -48,7 +48,7 @@ function getLocation(event) {
         buildTableRow(tablebody, stateLocation);
     })
 
-    // to have a table dispalay
+    // to have a table dispalay the location info
     function buildTableRow(tableBody, stateLocation) {
 
         let row = tableBody.insertRow(-1);
@@ -71,8 +71,11 @@ function getLocation(event) {
 
     }
 
+   
+
 }
-console.log(getLocation);
+
+
 
 
 function initLocationDropdown() {
@@ -81,6 +84,7 @@ function initLocationDropdown() {
     let typeDropdown = document.querySelector("#stateOptions");
 
     let defaultOption = document.createElement("option");
+    // clearing 
     defaultOption.value = "";
     defaultOption.textContent = "Select a State";
 
@@ -94,13 +98,15 @@ function initLocationDropdown() {
 
     typeDropdown.appendChild(placeholder);
 
-
+    // looping through locationArray
     locationsArray.forEach((State) => {
         let option = document.createElement("option");
         option.value = State;
         option.textContent = State;
         locationsDropdown.appendChild(option);
-    }); parkTypesArray.forEach((name) => {
+    }); 
+    // looping throught the parkArray
+    parkTypesArray.forEach((name) => {
         let newOption = document.createElement("newOption");
         newOption.value = name;
         newOption.textContent = name;
@@ -117,12 +123,14 @@ function selectOptions() {
     console.log("Location radio checked:", document.querySelector("#location").checked);
 
 
-
+    // calling the dropdown by the by the id 
     let locationOptions = document.querySelector("#stateOptions");
+    // clearing 
     locationOptions.innerHTML = "";
 
 
-
+    // doing an if and else if statment to dynamically populate the dropdown list by either location or type 
+    // based on the radio button it was cliked on giving the options it matches with.
     if (document.querySelector("#location").checked) {
         console.log("Location radio")
 
