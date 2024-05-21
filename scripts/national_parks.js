@@ -12,6 +12,9 @@ window.onload = () => {
 
     // grabing the dropdown by the id from html page
     let stateDropdown = document.querySelector("#stateOptions");
+   
+
+
 
     // listening for a change by using addeventListener
     locationRadio.addEventListener("change", selectOptions);
@@ -19,12 +22,15 @@ window.onload = () => {
     typeRadio.addEventListener("change", selectOptions);
 
     stateDropdown.addEventListener("change", getLocation);
+    
+   
 
 
 
 
 
 }
+
 
 
 function getLocation(event) {
@@ -46,6 +52,24 @@ function getLocation(event) {
     // to loop through the ones that match the state on the locationArray and the state on nationalparksArray
     matchingLocation.forEach((stateLocation) => {
         buildTableRow(tablebody, stateLocation);
+    })
+
+    let matchingType = nationalParksArray.filter((park) => {
+        let parkType = park.LocationName.toLowerCase();
+        return["National Park","National Monument", "Recreation Area", "Scenic Trail","Battlefield", "Historic","Memorial",
+        "Preserve","Island","River","Seashore","Trail","Parkway"].some((type)=>{
+
+            return parkType.indexOf(type) !== -1;
+
+        });
+        
+
+
+    });
+
+    matchingType.forEach((parkType) => {
+        buildTableRow(tablebody, parkType);
+
     })
 
     // to have a table dispalay the location info
@@ -70,8 +94,27 @@ function getLocation(event) {
 
 
     }
+    function buildTableRow(tableBody, parkType ){
+        parkType.forEach((park)=>{
+            let row = tableBody.insertRow(-1);
 
-   
+            let cell1 = row.insertCell(0);
+            cell1.innerText = park.LocationID;
+
+            let cell2 = row.insertCell(1);
+            cell2.innerText = park.LocationName;
+
+            let cell3 = row.insertCell(2);
+            cell3.innerText = `${park.Address}, ${park.City}, ${park.State}, ${park.ZipCode}`;
+
+            let cell4 = row.insertCell(3);
+            cell4.innerText = parkType.Phone;
+
+            let cell5 = row.insertCell(4);
+            cell5.innerText = park.Visit ? `<a href="${park.Visit}">Visit</a>` : "";
+
+        })
+    }
 
 }
 
@@ -104,7 +147,7 @@ function initLocationDropdown() {
         option.value = State;
         option.textContent = State;
         locationsDropdown.appendChild(option);
-    }); 
+    });
     // looping throught the parkArray
     parkTypesArray.forEach((name) => {
         let newOption = document.createElement("newOption");
@@ -141,7 +184,7 @@ function selectOptions() {
             locationOptions.appendChild(option);
         });
 
-    }else if (document.querySelector("#type").checked) {
+    } else if (document.querySelector("#type").checked) {
         console.log("type radio");
 
         parkTypesArray.forEach((type) => {
