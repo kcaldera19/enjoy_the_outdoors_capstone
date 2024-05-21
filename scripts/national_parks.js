@@ -74,32 +74,7 @@ function getLocation(event) {
     });
     
 
-    // let matchingType = nationalParksArray.filter((park) => {
-    //     let parkType = park.LocationName.toLowerCase();
-    //     return["National Park","National Monument", "Recreation Area", "Scenic Trail","Battlefield", "Historic","Memorial",
-    //     "Preserve","Island","River","Seashore","Trail","Parkway"].some((type)=>{
-
-    //         return parkType.indexOf(type) !== -1;
-
-    //     });
-        
-
-    // });
-
-
-    // to loop through the ones that match the state on the locationArray and the state on nationalparksArray
-    // matchingLocation.forEach((stateLocation) => {
-    //     buildTableRow(tablebody, stateLocation);
-    // });
-
-   
-
-    // matchingType.forEach((parkType) => {
-    //     buildTableRow(tablebody, parkType);
-
-    // })
-
-    // to have a table dispalay the location info
+    
     function buildTableRow(tableBody, data) {
 
         let row = tableBody.insertRow(-1);
