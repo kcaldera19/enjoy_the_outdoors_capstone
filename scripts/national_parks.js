@@ -80,7 +80,7 @@ function getLocation(event) {
         let row = tableBody.insertRow(-1);
 
         let cell1 = row.insertCell(0);
-        cell1.innerText = data.LocationID;
+        cell1.innerText = `${data.LocationID}`;
 
         let cell2 = row.insertCell(1);
         cell2.innerText = data.LocationName;
@@ -92,7 +92,7 @@ function getLocation(event) {
         cell4.innerText = data.Phone;
 
         let cell5 = row.insertCell(4);
-        cell5.innerText =data.Visit ? `<a href="${data.Visit}">Visit</a>` : "";
+        cell5.innerText =data.Visit ? `<a href="${data.Visit}">Visit</a>`:"";
 
 
     }
