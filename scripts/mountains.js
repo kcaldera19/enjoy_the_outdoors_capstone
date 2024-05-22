@@ -28,7 +28,7 @@ function displayMountainCard(event){
     let cardImage = document.createElement("img");
     cardImage.classList.add("card-img-top", "car-img-fity");
 
-    let imagePath="images/"+ mountain.image;
+    let imagePath="images/"+ mountain.img;
 
     console.log(imagePath);
 
