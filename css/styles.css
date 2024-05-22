@@ -1,8 +1,11 @@
-#carouselExampleCaptions{
+/* #carouselExampleCaptions{
     width:100%;
     height:50vw;
     object-fit: cover;
+} */
+.card-group{
+    width: 60%;
+    height: 25vw;
+    object-fit: cover;
 }
-.card_img{
-    float:right;
-}
+
