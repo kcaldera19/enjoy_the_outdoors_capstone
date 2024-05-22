@@ -26,11 +26,15 @@ function displayMountainCard(event){
     cardDiv.classList.add("card","w-25");
 
     let cardImage = document.createElement("img");
-    cardImage.classList.add("card-img-top", "car-img-fit");
+    cardImage.classList.add("card-img-top", "car-img-fity");
 
+    let imagePath="images/"+ mountain.image;
+
+    console.log(imagePath);
 
     // need to src properly
-    cardImage.src =mountain.image;
+    cardImage.src=imagePath;
+    
     cardImage.alt = mountain.name;
 
     cardDiv.appendChild(cardImage);
