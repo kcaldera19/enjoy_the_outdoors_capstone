@@ -74,14 +74,14 @@ function getLocation(event) {
     });
     
 
-    
+    // creating the cells for the table
     function buildTableRow(tableBody, data) {
 
         let row = tableBody.insertRow(-1);
-
+        // grabing the location Id from the data
         let cell1 = row.insertCell(0);
         cell1.innerText = `${data.LocationID}`;
-
+        // grabing the LocationName
         let cell2 = row.insertCell(1);
         cell2.innerText = data.LocationName;
 

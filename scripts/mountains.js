@@ -2,7 +2,9 @@
 
 
 window.onload = () => {
+    // the dropdown bar
     initMountainDropdown();
+    // grabing the dropdown by the id in the html page
     let mountainDropdown = document.querySelector("#selectMountains");
     mountainDropdown.addEventListener("change",displayMountainCard)
 
@@ -52,12 +54,22 @@ function displayMountainCard(event){
     let cardText = document.createElement("p");
     cardTitle.classList.add("card-text");
 
-    cardText.innerHTML = `${mountain.name} has an elevation of ${mountain.elevation} effort:${mountain.effort} description${mountain.desc} ${mountain.coords}`
+    cardText.innerHTML = `${mountain.name} has an elevation of ${mountain.elevation} effort:${mountain.effort} description${mountain.desc} `
 
+    
+   
     cardBody.appendChild(cardText);
+    
+    // created a variable to hold the elevation of the mountain
+    let elevation = document.createElement("p");
+    elevation.classList.add("card-text");
+    elevation.innerHTML =`Elevation: ${mountain.elevation}`;
 
+
+    cardBody.appendChild(elevation);
     cardDiv.appendChild(cardBody);
 
+    // connected the elvation
     mountainDiv.appendChild(cardDiv);
 
 
@@ -68,13 +80,15 @@ function displayMountainCard(event){
 // the dropdown
 function initMountainDropdown(){
     let mountainDropdown = document.querySelector("#selectMountains");
-
+    
+    // creting a default option
     let defaultOption = document.createElement("option");
+    // clearing the previous slection
     defaultOption.value="";
-
+    // puting the default as slect a mountain
     defaultOption.textContent="Select a Mountain";
     mountainDropdown.appendChild(defaultOption);
-
+    // looping through option in the mountainArray
     mountainsArray.forEach((mountain)=>{
         let newOption = document.createElement("option");
 
