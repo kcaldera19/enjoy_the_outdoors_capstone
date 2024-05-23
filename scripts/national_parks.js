@@ -90,7 +90,8 @@ function getLocation(event) {
         cell3.innerText = `${data.Address}, ${data.City}, ${data.State}, ${data.ZipCode}`;
 
         let cell4 = row.insertCell(3);
-        cell4.innerText = `${data.Phone}, Fax:${data.Fax}`;
+        cell4.innerText = `${data.Phone}, 
+        Fax:${data.Fax}`;
 
         let cell5 = row.insertCell(4);
         cell5.innerText =data.Visit ? `"${data.Visit}">`:"";
