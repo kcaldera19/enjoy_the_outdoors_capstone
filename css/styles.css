@@ -16,7 +16,10 @@ body{
 .navbar{
     background-color: rgb(23, 82, 23,0.518);
 }
+
 footer{
+    background-color:rgb(23, 82, 23);
     position: absolute;
     bottom: 0;
+    
 }
