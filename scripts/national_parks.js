@@ -93,7 +93,7 @@ function getLocation(event) {
         cell4.innerText = `${data.Phone}, Fax:${data.Fax}`;
 
         let cell5 = row.insertCell(4);
-        cell5.innerText =data.Visit ? `<a href="${data.Visit}">Visit</a>`:"";
+        cell5.innerText =data.Visit ? `"${data.Visit}">`:"";
 
 
     }
