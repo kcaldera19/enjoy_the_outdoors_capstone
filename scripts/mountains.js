@@ -65,12 +65,19 @@ function displayMountainCard(event){
     elevation.classList.add("card-text");
     elevation.innerHTML =`Elevation: ${mountain.elevation}`;
 
+    // created a variable to hold the effort of the mountain
+    let effort = document.createElement("p");
+    elevation.classList.add("card-text");
+    elevation.innerHTML =`Effort ${mountain.effort}`;
+
+
 
     cardBody.appendChild(elevation);
     cardDiv.appendChild(cardBody);
 
     // connected the elvation
     mountainDiv.appendChild(cardDiv);
+    effortDiv.appendChild(cardDiv);
 
 
 

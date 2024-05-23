@@ -31,12 +31,13 @@ window.onload = () => {
 
 function initTypeDropDown(){
     let typeDropdown = document.querySelector("#stateOptions");
+    // creating the default function
     let defaultOption = document.createElement("option");
     defaultOption.value ="";
     defaultOption.textContent ="Select a type";
     typeDropdown.appendChild(defaultOption);
 
-
+    // looping through the parksArray 
     parkTypesArray.forEach((type)=>{
         let newOption = document.createElement("option");
         newOption.value = type;
@@ -96,27 +97,7 @@ function getLocation(event) {
 
 
     }
-    // function buildTableRow(tableBody, parkType ){
-    //     parkType.forEach((park)=>{
-    //         let row = tableBody.insertRow(-1);
-
-    //         let cell1 = row.insertCell(0);
-    //         cell1.innerText = park.LocationID;
-
-    //         let cell2 = row.insertCell(1);
-    //         cell2.innerText = park.LocationName;
-
-    //         let cell3 = row.insertCell(2);
-    //         cell3.innerText = `${park.Address}, ${park.City}, ${park.State}, ${park.ZipCode}`;
-
-    //         let cell4 = row.insertCell(3);
-    //         cell4.innerText = parkType.Phone;
-
-    //         let cell5 = row.insertCell(4);
-    //         cell5.innerText = park.Visit ? `<a href="${park.Visit}">Visit</a>` : "";
-
-    //     })
-    // }
+   
 
 }
 
@@ -129,7 +110,7 @@ function initLocationDropdown() {
     let typeDropdown = document.querySelector("#stateOptions");
 
     let defaultOption = document.createElement("option");
-    // clearing 
+    // clearing the previos option
     defaultOption.value = "";
     defaultOption.textContent = "Select a State";
 
@@ -207,17 +188,3 @@ function selectOptions() {
 
 
 
-/*
-        You can remove the following console.log() lines.
-        They are here to verify that we have access to the data
-        The data script files are located in the scripts/data directory
-    */
-
-//log the locationsArray to the console (scripts/data/locationData.js)
-// console.log(locationsArray)
-
-// //log the parkTypesArray to the console (scripts/data/parkTypeData.js)
-// console.log(parkTypesArray)
-
-// //log the nationalParksArray to the console (scripts/data/nationalParkData.js)
-// console.log(nationalParksArray)
