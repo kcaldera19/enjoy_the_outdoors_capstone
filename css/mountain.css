@@ -2,3 +2,10 @@ body{
     background-color: rgb(1, 4, 19);
     color: white;
 }
+.mountainCard{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-10%,-40%);
+    width: 2000px;
+}
