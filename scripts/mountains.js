@@ -67,17 +67,30 @@ function displayMountainCard(event){
 
     // created a variable to hold the effort of the mountain
     let effort = document.createElement("p");
-    elevation.classList.add("card-text");
-    elevation.innerHTML =`Effort ${mountain.effort}`;
+    effort.classList.add("card-text");
+    effort.innerHTML =`Effort :${mountain.effort}`;
+
+    let lat = document.createElement("p");
+    lat.classList.add("card-text");
+    lat.innerHTML = `Lat: ${mountain.coords.lat}`;
+
+    let lng = document.createElement("p");
+    lng.classList.add("card-text");
+    lng.innerHTML = `Lng : ${ mountain.coords.lng}`
+
+    
 
 
-
+    
     cardBody.appendChild(elevation);
     cardDiv.appendChild(cardBody);
 
     // connected the elvation
     mountainDiv.appendChild(cardDiv);
-    effortDiv.appendChild(cardDiv);
+    cardBody.appendChild(effort);
+    cardBody.appendChild(lat);
+    cardBody.appendChild(lng);
+   
 
 
 
