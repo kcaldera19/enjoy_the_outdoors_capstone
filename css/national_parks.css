@@ -8,3 +8,9 @@ body{
 .navbar{
     background-color: rgb(104, 131, 104);
 }
+#nationalFooter{
+    background-color:rgb(118, 158, 118);
+
+    bottom: 0;
+    
+}

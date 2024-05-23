@@ -17,8 +17,8 @@ body{
     background-color: rgb(23, 82, 23,0.518);
 }
 
-footer{
-    background-color:rgb(23, 82, 23);
+#indexFooter{
+    background-color:rgb(118, 158, 118);
     position: absolute;
     bottom: 0;
     

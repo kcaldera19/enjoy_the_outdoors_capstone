@@ -80,12 +80,12 @@ function displayMountainCard(event){
 
     
 
-
+    // appending the elments
     
     cardBody.appendChild(elevation);
     cardDiv.appendChild(cardBody);
 
-    // connected the elvation
+    
     mountainDiv.appendChild(cardDiv);
     cardBody.appendChild(effort);
     cardBody.appendChild(lat);
