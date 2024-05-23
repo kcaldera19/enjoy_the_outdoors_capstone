@@ -1,9 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .general_titles{
     background-color: rgba(119, 64, 64, 0.582);
 }
 body{
     background-color: rgb(1, 4, 19);
     color: white;
+    padding-bottom:60px ;
 }
 .navbar{
     background-color: rgb(104, 131, 104);
