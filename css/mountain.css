@@ -2,16 +2,26 @@
 body{
     background-color: rgb(1, 4, 19);
     color: white;
+    margin:0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    
 }
 .navbar{
     background-color: rgb(104,131,104);
 }
+
 #mountainSelected{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-10%,-48%);
-    width: 100%;
+    position: relative;;
+    margin: auto;
+    width: 95%;
+    padding: 20px;
+    
+
+    
+    
+    
     
 }
 
