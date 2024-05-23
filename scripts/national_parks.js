@@ -28,20 +28,23 @@ window.onload = () => {
 
 
 }
-
+// initializes a dropdown menu by populating options
 function initTypeDropDown(){
     let typeDropdown = document.querySelector("#stateOptions");
-    // creating the default function
+
+    // creating the default option such as Select type
     let defaultOption = document.createElement("option");
     defaultOption.value ="";
     defaultOption.textContent ="Select a type";
     typeDropdown.appendChild(defaultOption);
 
-    // looping through the parksArray 
+    // looping through the parksArray elements creating a new option for each element 
     parkTypesArray.forEach((type)=>{
         let newOption = document.createElement("option");
         newOption.value = type;
         newOption.textContent = type;
+
+        // appending each newOption to the dropdown menu
         typeDropdown.appendChild(newOption);
     });
 }
@@ -57,7 +60,8 @@ function getLocation(event) {
     // to clear it after every click
     tablebody.innerHTML = "";
 
-    // Its going through the nationalParksArray and filtering out the 
+    // Its going through the nationalParksArray and filtering out the based if the you click on the which radio button clicked on.
+
     let matchingData = nationalParksArray.filter((item) => {
         if(document.querySelector("#location").checked){
 
@@ -70,6 +74,7 @@ function getLocation(event) {
         
 
     });
+    // Its looping through each park and filtering list and creates a table row for rach park using builTableRow function
     matchingData.forEach((data)=>{
         buildTableRow(tablebody,data);
     });

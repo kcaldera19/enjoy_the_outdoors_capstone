@@ -2,10 +2,14 @@ body{
     background-color: rgb(1, 4, 19);
     color: white;
 }
-.mountainCard{
+.navbar{
+    background-color: rgb(104,131,104);
+}
+#mountainSelected{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-10%,-40%);
     width: 2000px;
 }
+
