@@ -1,27 +1,27 @@
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.general_titles{
+    background-color: rgba(119, 64, 64, 0.582);
+}
 body{
     background-color: rgb(1, 4, 19);
     color: white;
-    margin:0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-    
+    padding-bottom:100px ;
 }
 .navbar{
-    background-color: rgb(104,131,104);
+    background-color: rgb(104, 131, 104);
 }
+.container{
+    width: auto;
+}
+footer{
+    background-color:rgb(118, 158, 118);
 
-#mountainSelected{
-    position: relative;;
-    margin: auto;
-    width: 95%;
-    padding: 20px;
-    
-
-    
-    
-    
+    bottom: 0;
     
 }
 
