@@ -35,18 +35,18 @@ function initTypeDropDown(){
     // creating the default option such as Select type
     let defaultOption = document.createElement("option");
     defaultOption.value ="";
-    defaultOption.textContent ="Select a type";
+    defaultOption.textContent ="Select a location";
     typeDropdown.appendChild(defaultOption);
 
     // looping through the parksArray elements creating a new option for each element 
-    parkTypesArray.forEach((type)=>{
-        let newOption = document.createElement("option");
-        newOption.value = type;
-        newOption.textContent = type;
+    // parkTypesArray.forEach((type)=>{
+    //     let newOption = document.createElement("option");
+    //     newOption.value = type;
+    //     newOption.textContent = type;
 
-        // appending each newOption to the dropdown menu
-        typeDropdown.appendChild(newOption);
-    });
+    //     // appending each newOption to the dropdown menu
+    //     typeDropdown.appendChild(newOption);
+    // });
 }
 
 
@@ -66,7 +66,8 @@ function getLocation(event) {
         if(document.querySelector("#location").checked){
 
             return item.State === selectedlocation;
-        }else if (document.querySelector("#type").checked){
+        }
+        else if (document.querySelector("#type").checked){
             let parkType =item.LocationName.toLowerCase();
             return parkType.includes(selectedlocation.toLowerCase());
 
@@ -140,14 +141,14 @@ function initLocationDropdown() {
         locationsDropdown.appendChild(option);
     });
     
-    parkTypesArray.forEach((name) => {
-        let newOption = document.createElement("newOption");
-        newOption.value = name;
-        newOption.textContent = name;
-        typeDropdown.appendChild(newOption);
+    // parkTypesArray.forEach((name) => {
+    //     let newOption = document.createElement("newOption");
+    //     newOption.value = name;
+    //     newOption.textContent = name;
+    //     typeDropdown.appendChild(newOption);
 
 
-    });
+    // });
 
 
 }
@@ -175,7 +176,8 @@ function selectOptions() {
             locationOptions.appendChild(option);
         });
 
-    } else if (document.querySelector("#type").checked) {
+    } 
+    else if (document.querySelector("#type").checked) {
         console.log("type radio");
         // if type radio button is checked populate with park types
         parkTypesArray.forEach((type) => {
