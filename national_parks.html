@@ -36,7 +36,8 @@
 
 
   <!-- creating Radio Buttons -->
-  <!-- radio button for location -->
+
+  <!-- radio button for filtering by location -->
   </select>
   <div class="form-check">
     <input class="form-check-input" type="radio" name="filteringParkstype" id="location" checked>
@@ -44,25 +45,28 @@
       Location
     </label>
   </div>
-  <!-- radio button  for type -->
+  <!-- radio button  for filtering by type -->
   <div class="form-check">
     <input class="form-check-input" type="radio" name="filteringParkstype" id="type">
     <label class="form-check-label" for="type">
       Type
     </label>
   </div>
-  <!-- creating the dropdown -->
+  <!-- creating the dropdown  for selecting state-->
   <select class="form-select" aria-label="Default select example" id="stateOptions">
     <option selected></option>
 
   </select>
 
   <body>
+
+    <!-- take section for displaying park info -->
     <section>
       <div class=table-table-stripped>
-        <!-- for the table for the location -->
+        <!-- for the table for displaying park info -->
         <table style="background-color: rgba(211, 186, 164, 0.989);" id="locationTable">
           <colgroup>
+            <!-- column styles -->
             <col span="1" style="background-color:rgba(23, 82, 23, 0.288) ;">
             <col span="1" style="background-color:rgba(23, 82, 23, 0.164) ;">
             <col span="1" style="background-color:rgba(23, 82, 23, 0.288) ;">
@@ -71,7 +75,7 @@
             
           </colgroup>
           <thead>
-            <!-- part of the table that stays the same -->
+            <!-- part of the table that stays the same the headers-->
             <tr class="general_titles">
               <th>Location ID</th>
               <th>Name</th>
@@ -80,6 +84,7 @@
               <th>URL</th>
             </tr>
           </thead>
+          <!-- table body for park data -->
           <tbody id="locationTableBody">
   
           </tbody>
@@ -88,6 +93,8 @@
     </section>
     
   </body>
+
+  <!-- footer section -->
   <nav class="navbar fixed-bottom" id="nationalFooter">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">&copy;copyright reserved</a>

@@ -1,7 +1,7 @@
 "use strict"
-
+// function to run when the window loads
 window.onload = () => {
-
+    // initialize dropdown for location and type
     initLocationDropdown();
     initTypeDropDown();
 
@@ -11,13 +11,13 @@ window.onload = () => {
     // grabed the id for the radio type option
     let typeRadio = document.querySelector("#type");
 
-    // grabing the dropdown by the id from html page
+    // grabing the dropdown by the id from html page for the states
     let stateDropdown = document.querySelector("#stateOptions");
    
 
 
 
-    // listening for a change by using addeventListener
+    // listening for a change by using addEventListener
     locationRadio.addEventListener("change", selectOptions);
 
     typeRadio.addEventListener("change", selectOptions);
@@ -28,7 +28,7 @@ window.onload = () => {
 
 
 }
-// initializes a dropdown menu by populating options
+// initializes a dropdown menu by populating options for park types
 function initTypeDropDown(){
     let typeDropdown = document.querySelector("#stateOptions");
 
@@ -50,10 +50,10 @@ function initTypeDropDown(){
 }
 
 
-
+// function to handle getting park locations based on user selection
 function getLocation(event) {
 
-    // 
+    // getting the selction location from the dropdown
     let selectedlocation = event.target.value;
     // created a variable to hold the table and grabing the id form the html page
     let tablebody = document.querySelector("#locationTableBody");
@@ -80,9 +80,10 @@ function getLocation(event) {
     });
     
 
-    // creating the cells for the table
+    // function to build table rows dynmaically
     function buildTableRow(tableBody, data) {
 
+        // insert a new row
         let row = tableBody.insertRow(-1);
         // grabing the location Id from the data
         let cell1 = row.insertCell(0);
@@ -109,12 +110,13 @@ function getLocation(event) {
 
 
 
-
+// function to initinatize tthe location dropdown
 function initLocationDropdown() {
 
     let locationsDropdown = document.querySelector("#stateOptions");
     let typeDropdown = document.querySelector("#stateOptions");
 
+    // creating default option for the dropdow 
     let defaultOption = document.createElement("option");
     // clearing the previos option
     defaultOption.value = "";
@@ -130,14 +132,14 @@ function initLocationDropdown() {
 
     typeDropdown.appendChild(placeholder);
 
-    // looping through locationArray
+    // looping through locationArray to populate the states
     locationsArray.forEach((State) => {
         let option = document.createElement("option");
         option.value = State;
         option.textContent = State;
         locationsDropdown.appendChild(option);
     });
-    // looping throught the parkArray
+    
     parkTypesArray.forEach((name) => {
         let newOption = document.createElement("newOption");
         newOption.value = name;
@@ -149,7 +151,7 @@ function initLocationDropdown() {
 
 
 }
-
+// function to dynamically select options based on the radio button selection
 function selectOptions() {
     console.log("selcted function");
     console.log("Location radio checked:", document.querySelector("#location").checked);
@@ -157,7 +159,7 @@ function selectOptions() {
 
     // calling the dropdown by the by the id 
     let locationOptions = document.querySelector("#stateOptions");
-    // clearing 
+    // clearing the previous option
     locationOptions.innerHTML = "";
 
 
@@ -166,7 +168,7 @@ function selectOptions() {
     if (document.querySelector("#location").checked) {
         console.log("Location radio")
 
-
+        // if the radio button is checked populate with location
         locationsArray.forEach((location) => {
             let option = document.createElement("option");
             option.textContent = location;
@@ -175,7 +177,7 @@ function selectOptions() {
 
     } else if (document.querySelector("#type").checked) {
         console.log("type radio");
-
+        // if type radio button is checked populate with park types
         parkTypesArray.forEach((type) => {
             let option = document.createElement("option");
             option.textContent = type;
