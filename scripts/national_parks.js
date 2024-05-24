@@ -33,10 +33,10 @@ function initTypeDropDown(){
     let typeDropdown = document.querySelector("#stateOptions");
 
     // creating the default option such as Select type
-    let defaultOption = document.createElement("option");
-    defaultOption.value ="";
-    defaultOption.textContent ="Select a location";
-    typeDropdown.appendChild(defaultOption);
+    // let defaultOption = document.createElement("option");
+    // defaultOption.value ="";
+    // defaultOption.textContent ="Select a location";
+    // typeDropdown.appendChild(defaultOption);
 
     // looping through the parksArray elements creating a new option for each element 
     // parkTypesArray.forEach((type)=>{
@@ -127,11 +127,11 @@ function initLocationDropdown() {
     locationsDropdown.appendChild(defaultOption);
 
 
-    let placeholder = document.createElement("newOptions");
-    placeholder.value = "";
-    placeholder.textContent = "Select a type";
+    // let placeholder = document.createElement("newOptions");
+    // placeholder.value = "";
+    // placeholder.textContent = "Select a type";
 
-    typeDropdown.appendChild(placeholder);
+    // typeDropdown.appendChild(placeholder);
 
     // looping through locationArray to populate the states
     locationsArray.forEach((State) => {
